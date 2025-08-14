@@ -54,6 +54,15 @@ def visitor_ip():
     print(f"Visitor IP: {visitor_ip}")
     return f"Visitor IP: {visitor_ip}"
 
+@app.route('/log-ip')
+def log_ip():
+    # Get visitor IP and log it to console (will appear in Render logs)
+    visitor_ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+    if visitor_ip and ',' in visitor_ip:
+        visitor_ip = visitor_ip.split(',')[0]  # Take the first IP in the list
+    print(f"Website Visitor IP: {visitor_ip}")
+    return "IP logged successfully"
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
