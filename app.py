@@ -47,6 +47,13 @@ def download_qr():
     buffer.seek(0)
     return send_file(buffer, mimetype='image/png', as_attachment=True, download_name='qrcode.png')
 
+@app.route('/visitor-ip')
+def visitor_ip():
+    # Render passes the real IP in X-Forwarded-For
+    visitor_ip = request.headers.get('X-Forwarded-For', request.remote_addr)
+    print(f"Visitor IP: {visitor_ip}")
+    return f"Visitor IP: {visitor_ip}"
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
