@@ -47,6 +47,10 @@ def download_qr():
     buffer.seek(0)
     return send_file(buffer, mimetype='image/png', as_attachment=True, download_name='qrcode.png')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/visitor-ip')
 def visitor_ip():
     # Render passes the real IP in X-Forwarded-For

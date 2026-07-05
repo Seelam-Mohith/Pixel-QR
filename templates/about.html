@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>QR Code Generator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <title>About Us - Pixel QR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect x="2" y="2" width="10" height="10" rx="2" fill="white"/><rect x="20" y="2" width="10" height="10" rx="2" fill="white"/><rect x="2" y="20" width="10" height="10" rx="2" fill="white"/><rect x="8" y="8" width="16" height="16" rx="3" fill="%23444"/><rect x="12" y="12" width="8" height="8" rx="1" fill="white"/></svg>' />
     <style>
         body {
@@ -10,6 +10,8 @@
             background: linear-gradient(135deg, #18191a 0%, #232526 100%);
             margin: 0;
             padding: 0;
+            min-height: 100vh;
+            color: #e0e0e0;
         }
         .navbar {
             background: #18191a;
@@ -27,6 +29,7 @@
             letter-spacing: 1px;
             display: flex;
             align-items: center;
+            text-decoration: none;
         }
         .navbar .brand svg {
             width: 32px;
@@ -49,83 +52,63 @@
             color: #fff;
         }
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 80vh;
-            margin-bottom: 80px;
-            margin-top: 40px;
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 2rem;
+            padding-bottom: 80px;
         }
-        form {
+        .about-card {
             background: #232526;
-            padding: 2rem 2.5rem;
+            padding: 2.5rem 3rem;
             border-radius: 12px;
             box-shadow: 0 2px 24px rgba(0,0,0,0.10);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
-        h2 {
+        .about-card h1 {
+            font-size: 2rem;
+            font-weight: 700;
             color: #fff;
-            text-shadow: 1px 1px 0 #18191a;
+            margin-top: 0;
             margin-bottom: 1.5rem;
-            font-family: 'Inter', Arial, sans-serif;
+        }
+        .about-card h2 {
+            font-size: 1.3rem;
             font-weight: 600;
-        }
-        input[type="url"] {
-            width: 320px;
-            padding: 0.7rem;
-            border: 1.5px solid #444;
-            border-radius: 6px;
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-            background: #18191a;
             color: #fff;
-            transition: border 0.2s;
-        }
-        input[type="url"]:focus {
-            border: 2px solid #fff;
-            outline: none;
-        }
-        button[type="submit"], .download-btn {
-            padding: 0.6rem 1.5rem;
-            background: #e0e0e0;
-            color: #232526;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 0.5rem;
+            margin-top: 2rem;
             margin-bottom: 0.5rem;
-            transition: background 0.2s;
+        }
+        .about-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #c0c0c0;
+            margin-bottom: 1rem;
+        }
+        .about-card a {
+            color: #8ab4f8;
             text-decoration: none;
         }
-        button[type="submit"]:hover, .download-btn:hover {
-            background: #bdbdbd;
-            color: #18191a;
+        .about-card a:hover {
+            text-decoration: underline;
         }
-        .qr-section {
-            margin-top: 2rem;
-            text-align: center;
-            margin-bottom: 40px;
+        .about-card .contact-item {
+            margin: 0.5rem 0;
         }
-        .qr-section img {
-            border: 4px solid #444;
-            border-radius: 8px;
+        .support-box {
             background: #18191a;
-            padding: 10px;
-            margin-bottom: 1rem;
-            width: 300px;
-            height: 300px;
-            object-fit: contain;
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid #e0e0e0;
+        }
+        .support-box p {
+            margin: 0.3rem 0;
         }
         .footer {
             width: 100%;
             background: #18191a;
             color: #b0b0b0;
             text-align: center;
-            padding: 1.2rem 0 1rem 0;
+            padding: 1.2rem 0;
             font-size: 1rem;
             letter-spacing: 0.5px;
             position: fixed;
@@ -133,18 +116,22 @@
             bottom: 0;
         }
         @media (max-width: 500px) {
-            form {
-                padding: 1rem;
+            .container {
+                padding: 0 1rem;
+                padding-bottom: 80px;
             }
-            input[type="url"] {
-                width: 90vw;
+            .about-card {
+                padding: 1.5rem;
+            }
+            .about-card h1 {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <div class="brand">
+        <a href="/" class="brand">
             <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="2" y="2" width="10" height="10" rx="2" fill="#fff"/>
                 <rect x="20" y="2" width="10" height="10" rx="2" fill="#fff"/>
@@ -153,34 +140,36 @@
                 <rect x="12" y="12" width="8" height="8" rx="1" fill="#fff"/>
             </svg>
             PixelQR
-        </div>
+        </a>
         <div class="nav-links">
+            <a href="/">Home</a>
             <a href="/about">About Us</a>
-            <a href="#contact">Contact</a>
         </div>
     </div>
+
     <div class="container">
-        <form method="POST">
-            <h2>QR Code Generator</h2>
-            <input type="url" name="url" placeholder="Enter URL here" required />
-            <button type="submit" name="action" value="generate">Generate QR Code</button>
-        </form>
-        {% if qr_generated %}
-        <div class="qr-section">
-            <img src="{{ qr_image }}" alt="QR Code" />
-            <br />
-            <a href="/download" class="download-btn" download>Download QR Code</a>
+        <div class="about-card">
+            <h1>About Us</h1>
+            <p><strong>Pixel QR</strong> is a modern QR code platform designed to make creating, customizing, and managing QR codes simple and accessible. Whether you need QR codes for websites, business cards, events, menus, or marketing campaigns, Pixel QR helps you generate professional, high-quality QR codes in just a few clicks.</p>
+            <p>Our mission is to provide a fast, reliable, and user-friendly experience with powerful customization options and high-resolution downloads for both personal and professional use.</p>
+
+            <h2>Contact</h2>
+            <p class="contact-item">Email: <a href="mailto:seelammohith2222@gmail.com">seelammohith2222@gmail.com</a></p>
+
+            <h2>Creator</h2>
+            <p><strong>Mohith Seelam</strong><br>Computer Science Engineering Student and Full Stack Developer passionate about building practical, user-focused web applications.</p>
+            <p>GitHub: <a href="https://github.com/Seelam-Mohith" target="_blank">github.com/Seelam-Mohith</a></p>
+
+            <div class="support-box">
+                <p><strong>Support the Project</strong></p>
+                <p>If you find <strong>Pixel QR</strong> useful, please consider giving the project a &#9733; on GitHub. Your support helps the project reach more developers and motivates future improvements.</p>
+                <p><a href="https://github.com/Seelam-Mohith/Pixel-QR" target="_blank">https://github.com/Seelam-Mohith/Pixel-QR</a></p>
+            </div>
         </div>
-        {% else %}
-        <div class="qr-section">
-            <div style="color:#b0b0b0;font-size:1.1rem;padding:60px 0;">Paste URL to generate QR code</div>
-            <br />
-            <button class="download-btn" type="button" disabled style="opacity:0.5;cursor:not-allowed;">Download QR Code</button>
-        </div>
-        {% endif %}
     </div>
+
     <div class="footer">
-        &copy; 2025 PixelQR &mdash; <span id="about">A simple, beautiful QR code generator for everyone.</span>
+        &copy; 2025 PixelQR &mdash; Making QR codes simple for everyone.
     </div>
 </body>
 </html>
